@@ -36,9 +36,21 @@
         </div>
         <div class="participants-container">
             <p class="participants-title">Список участников</p>
-            <p class="participants-count"> Участников</p>
-            <hr class="participants-divider">
+            <div th:if="${#lists.size(team.emails) > 0}" class="participants-list">
+                <p class="participants-count" th:text="'Участников: ' + ${#lists.size(team.emails)}">Участников</p>
+                <hr class="participants-divider">
+                <ul>
+                    <li th:each="user : ${team.emails}">
+                        <a th:title="${user.email}" class="user-name">
+                            <span th:text="${user.email}">example@example.com</span>
+                            <hr class="participants-divider">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <p th:if="${#lists.size(team.emails) == 0}" class="no-participants">У этой команды нет участников.</p>
         </div>
+
         <div class="tasks-table-wrapper">
             <div class="table-titles">
                 <span class="table-title">Задачи команды</span>

@@ -30,7 +30,7 @@ public class ProfileController {
         return "profile"; // Шаблон для отображения профиля
     }
 
-    @GetMapping("/currentUser")
+    @GetMapping("/profile")
     public String getCurrentUser(Principal principal, Model model) {
         UserEntity user = userService.getCurrentUser(principal);
         model.addAttribute("user", user);
