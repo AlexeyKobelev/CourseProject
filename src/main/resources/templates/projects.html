@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная страница</title>
+  <link rel="stylesheet" th:href="@{/css/projects.css}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div th:replace="fragments/navbar.html"></div>
+  <main class="main-content">
+    <!-- Заголовок и кнопка создания проекта -->
+    <div class="header-bar">
+      <h1>Проекты</h1>
+      <button class="create-project-btn">Создать проект</button>
+    </div>
+
+    <!-- Панель поиска и фильтров -->
+    <div class="projects-toolbar">
+      <div class="search-bar-projects">
+        <img src="/icons/search.svg" alt="Поиск" class="search-icon">
+        <input type="text" placeholder="Поиск" class="search-input">
+      </div>
+      <select class="filters">
+        <option>Фильтры</option>
+      </select>
+    </div>
+
+    <div class="projects-table-wrapper">
+      <table class="projects-table">
+        <thead>
+        <tr>
+          <th>Название</th>
+          <th>Ключ</th>
+          <th>Руководитель</th>
+          <th>Описание</th>
+          <th>Статус</th>
+          <th>Дополнительные действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="project : ${projects}">
+          <td>
+            <a th:href="@{/projects/{id}(id=${project.id_project})}" th:text="${project.name}"></a>
+          </td>
+          <td th:text="${project.key}"></td>
+          <td th:text="${project.users.iterator().next().email}"></td>
+          <td th:text="${project.description}"></td>
+          <td>Активный</td>
+          <td><button class="action-btn">
+            <img src="/icons/extramenu.svg">
+          </button></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+   <!-- Пагинация -->
+<div class="pagination">
+
+    <button class="pagination-arrow" id="prev-page" disabled>&lt;</button>
+
+    <a href="#" class="pagination-page active">1</a>
+
+    <button class="pagination-arrow" id="next-page">&gt;</button>
+  </div>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная страница</title>
+  <link rel="stylesheet" th:href="@{/css/project_page.css}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div th:replace="fragments/navbar.html"></div>
+  <div class="project-container">
+    <!-- Навигация слева -->
+    <nav class="project-sidebar">
+      <h2 class="project-title"  th:text="${project.name}">Мой проект</h2>
+      <div class="project-nav">
+        <h3>Планирование</h3>
+        <ul>
+            <li>
+              <a href="#">
+                <img src="/icons/backlog.svg" alt="Бэклог" class="nav-icon">
+                Бэклог
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src="/icons/board.svg" alt="Доска" class="nav-icon">
+                Доска
+              </a>
+            </li>
+          </ul>
+      </div>
+    </nav>
+  
+    <!-- Основной контент -->
+    <main class="main-content">
+      <!-- Заголовок страницы -->
+      <div class="header-main">
+        <h1>Бэклог</h1>
+        <button class="complete-project-btn">Завершить проект</button>
+      </div>
+      <!-- Строка поиска и иконки участников -->
+      <div class="search-bar">
+        <div class="search-field">
+          <img src="/icons/search.svg" alt="Поиск" class="search-icon">
+          <input type="text" class="search-input" placeholder="Поиск">
+        </div>
+        <div class="participants-icons">
+          <button class="add-participant-btn">
+            <img src="/icons/addUser.svg" alt="Добавить участника" class="add-icon">
+          </button>
+        </div>
+      </div>
+      <!-- Кнопка "Запустить проект" -->
+      <button class="start-project-btn">Создать спринт</button>
+
+      <!-- Пустой контейнер с текстом -->
+      <div class="empty-backlog">
+        <p>Бэклог пуст</p>
+      </div>
+      <div class="create-task-btn-wrapper">
+        <button class="create-task-btn">
+          <img src="/icons/plus.svg" alt="Добавить" class="plus-icon">
+          Создать задачу
+        </button>
+      </div>
+    </main>
+  </div>
+  
+</body>
+</html>

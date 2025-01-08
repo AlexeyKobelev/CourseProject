@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная страница</title>
+  <link rel="stylesheet" th:href="@{/css/TeamPage.css}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div th:replace="fragments/navbar.html"></div>
+  <main>
+    <div class="photo-container">
+         <button class="upload-btn">
+            <img src="/icons/load-photo.svg" alt="Добавить фото" class="upload-icon">
+          </button>
+    </div>
+    <div class="main-container">
+        <div class="team-name-container">
+            <span class="team-name" id="team-name-text" th:text="${team.team_name}">Название команды</span>
+            <button class="edit-team-name-btn" id="edit-team-name-btn">
+                <img src="/icons/edit.svg">
+            </button>
+          </div>
+          <p class="team-description-title">Описание команды</p>
+          <textarea type ="text" placeholder="Расскажите о своей команде" class="team-description-container"></textarea>
+          <div class="team-actions">
+            <button class="add-members-btn">
+                Добавить участника
+            </button>
+            <button class="more-options-btn">
+                <img src="/icons/extramenu.svg" alt="Дополнительные опции" class="more-options-icon">
+            </button>
+        </div>
+        <div class="participants-container">
+            <p class="participants-title">Список участников</p>
+            <p class="participants-count"> Участников</p>
+            <hr class="participants-divider">
+        </div>
+        <div class="tasks-table-wrapper">
+            <div class="table-titles">
+                <span class="table-title">Задачи команды</span>
+                <span class="table-title">Проект</span>
+                <span class="table-title">Исполнитель</span>
+            </div>
+            <div class="tasks-table-container">
+            </div>
+        </div>
+         
+    </div>
+  </main>
+</body>
+</html>
